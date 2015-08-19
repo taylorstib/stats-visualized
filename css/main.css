@@ -14,3 +14,9 @@ div#container {
   font-family: sans-serif;
   font-size: 11px;
 }
+
+a,
+a:visited {
+  color: blue;
+  text-decoration: none;
+}
