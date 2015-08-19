@@ -1,8 +1,7 @@
-console.log('main.js loaded');
 d3.json("./data/passing/2014_passing_short.json", function(data){
   var w = $("#container").width();
   var h = 200;
-  var svg = d3.select("#container").append("svg")
+  var svg = d3.select("#passing-2014").append("svg")
     .attr("height", h)
     .attr("width", w);
   var padding = 30;
@@ -50,14 +49,12 @@ d3.json("./data/passing/2014_passing_short.json", function(data){
     
   // svg.append("g").attr("class", 'axis').attr("transform", "translate(0,"+h+"").call(xAxis);
   // svg.append("g").attr("class", 'axis').attr("transform", "translate(18,0)").call(yAxis);
-  console.log('Chart completed');
 });
 
 d3.json("./data/steps/steps.json", function(data){
-  console.log(data);
   var w = $("#container").width();
   var h = 200;
-  var svg = d3.select("#container").append("svg")
+  var svg = d3.select("#steps").append("svg")
     .attr("height", h)
     .attr("width", w);
   var padding = 30;
@@ -68,6 +65,7 @@ d3.json("./data/steps/steps.json", function(data){
   var good = 0;
   var okay = 0;
   var bad  = 0;
+  var total = 0;
 
   svg.selectAll("rect")
     .data(data)
@@ -84,19 +82,24 @@ d3.json("./data/steps/steps.json", function(data){
       return yScale(d.steps);
     })
     .attr("fill", function(d) {
-      if (d.steps > 10000) {
+      if (d.steps > 8000) {
         good += 1;
+        total += 1;
         return "rgb(0,200,0)";
       } else if (d.steps > 5000) {
         okay += 1;
+        total += 1;
         return "rgb(213, 217, 50)";
       } else {
         bad += 1;
+        total += 1;
         return "rgb(255, 0, 0)";
       }
-    });
-    
+    });    
     console.log("good = " + good);
     console.log("okay = " + okay);
     console.log("bad = " + bad);
+    d3.select("#good").text("good = " + good + " = "+ Math.round(good/total * 100) + "%");
+    d3.select("#okay").text("okay = "+okay + " = "+ Math.round(okay/total * 100) + "%");
+    d3.select("#bad").text("bad = "+bad + " = "+ Math.round(bad/total * 100) + "%");
 });
