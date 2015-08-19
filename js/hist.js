@@ -9,7 +9,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 30},
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.linear()
-    .domain([0, 15000])
+    .domain([0, 16000])
     .range([0, width]);
 
 // Begin the remote data retrieval
@@ -18,7 +18,7 @@ d3.json('data/steps/steps.json', function(err, json){
 
   // Generate a histogram using 15 uniformly-spaced bins.
   var data = d3.layout.histogram()
-      .bins(x.ticks(15))
+      .bins(x.ticks(8))
       (values);
       console.log(values);
       console.log(data);
