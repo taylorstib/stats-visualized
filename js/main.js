@@ -1,27 +1,42 @@
+// Do some set up before calling the data
+var parseDate = d3.time.format("%m/%d/%Y").parse;
+console.log(parseDate("8/4/2015"));
+
+var margin = {top: 10, right: 30, bottom: 30, left: 50},
+    width = 1000 - margin.left - margin.right,
+    height = 250 - margin.top - margin.bottom;
+
+var svg = d3.select("#steps").append("svg")
+  .attr("height", height + margin.top + margin.bottom)
+  .attr("width", width + margin.left + margin.right)
+.append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var barPadding = 1;
+
+// Variables to generate counts
+var good = 0;
+var okay = 0;
+var bad  = 0;
+var total = 0;
 // Bar graph of my daily steps
 d3.json("./data/steps/steps.json", function(data){
-  var margin = {top: 10, right: 30, bottom: 30, left: 50},
-      width = 1000 - margin.left - margin.right,
-      height = 250 - margin.top - margin.bottom;
+  
+  // Parse the dates correctly
+  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+  });
   // var w = $("#container").width();
   // var h = 200;
-  var svg = d3.select("#steps").append("svg")
-    .attr("height", height + margin.top + margin.bottom)
-    .attr("width", width + margin.left + margin.right)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  var padding = 30;
-  var barPadding = 1;
-  var offset = 8;
-  var xScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.steps; })]).range([0, width]);
+  var xScale = d3.time.scale()
+    .range([0, width])
+    .domain(d3.extent(data, function(d) { return d.date; }));
+  
+  console.log(d3.extent(data, function(d){ return d.date; }));
+    
+  // var xScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.steps; })]).range([0, width]);
   var yScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.steps; })]).range([height, 0]);
   
-  // Variables to generate counts
-  var good = 0;
-  var okay = 0;
-  var bad  = 0;
-  var total = 0;
 
   // generate y axis
   var yAxis = d3.svg.axis()
