@@ -15,9 +15,9 @@ var x = d3.scale.linear()
 d3.json('data/steps/steps.json', function(err, json){
   values = json.map(function(obj){return obj.steps;});
 
-  // Generate a histogram using 15 uniformly-spaced bins.
+  // Generate a histogram using 8 uniformly-spaced bins.
   var data = d3.layout.histogram()
-      .bins(x.ticks(8))
+      .bins(x.ticks(15))
       (values);
 
   var y = d3.scale.linear()
