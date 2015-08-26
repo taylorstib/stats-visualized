@@ -1,6 +1,6 @@
 // Do some set up before calling the data
 var parseDate = d3.time.format("%m/%d/%Y").parse;
-console.log(parseDate("8/4/2015"));
+console.log(parseDate("8/26/2015"));
 
 var margin = {top: 10, right: 30, bottom: 30, left: 50},
     width = 1000 - margin.left - margin.right,
@@ -103,14 +103,14 @@ d3.json("./data/steps/steps.json", function(data){
   data.forEach(function(d) {
     d.date = parseDate(d.date);
   });
-  // var w = $("#container").width();
-  // var h = 200;
+
+
   var xScale = d3.time.scale()
     .range([0, width])
     .domain(d3.extent(data, function(d) { return d.date; }));
 
-  // var xScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.steps; })]).range([0, width]);
-  var yScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.minutes; })]).range([height, 0]);
+  // var yScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.minutes; })]).range([height, 0]);
+  var yScale = d3.scale.linear().domain([0, 160]).range([height, 0]);
   
 
   // generate y axis
