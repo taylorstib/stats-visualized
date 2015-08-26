@@ -31,28 +31,30 @@ var bad_min  = 0;
 var total_min = 0;
 // Bar graph of my daily steps
 d3.json("./data/steps/steps.json", function(data){
-  var groupedData = _.groupBy(data, function(obj){ return obj.date.split("/")[0]; });
   
-  console.log(groupedData);
+  // Grouped data by months for another graph
+  var groupedData = _.groupBy(data, function(obj){ return obj.date.split("/")[0]; });
+  // 
+  
   // Parse the dates correctly
-  data.forEach(function(d) {
-    d.date = parseDate(d.date);
-  });
+  data.forEach(function(d) { d.date = parseDate(d.date); });
   
   var xScale = d3.time.scale()
-    .range([0, width])
-    .domain(d3.extent(data, function(d) { return d.date; }));
+    .domain(d3.extent(data, function(d) { return d.date; }))
+    .range([0, width]);
 
-  // var xScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.steps; })]).range([0, width]);
-  var yScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.steps; })]).range([height, 0]);
+  
+  // Commented yscale uses the data to make it dynamic
+  // var yScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.steps; })]).range([height, 0]);
+  var yScale = d3.scale.linear().domain([0, 16000]).range([height, 0]);
   
 
   // generate y axis
   var yAxis = d3.svg.axis()
-      .scale(yScale)
-      .orient("left")
-      .tickSize(-width)
-      .ticks(10);
+    .scale(yScale)
+    .orient("left")
+    .tickSize(-width)
+    .ticks(10);
   
   var xAxis = d3.svg.axis()
     .scale(xScale)
@@ -62,22 +64,16 @@ d3.json("./data/steps/steps.json", function(data){
     .data(data)
     .enter()
     .append("rect")
-    .attr("x", function(d, i) {
-      return (i * (width / data.length)); 
-    })
-    .attr("y", function(d) {
-      return yScale(d.steps);
-    })
+    .attr("x", function(d, i) { return (i * (width / data.length)); })
+    .attr("y", function(d) { return yScale(d.steps); })
     .attr("width", width / data.length - barPadding)
-    .attr("height", function(d) {
-      return height - yScale(d.steps);
-    })
+    .attr("height", function(d) { return height - yScale(d.steps); })
     .attr("fill", function(d) {
-      if (d.steps > 8000) {
+      if (d.steps > 7500) {
         good += 1;
         total += 1;
         return "rgb(0,200,0)";
-      } else if (d.steps > 5000) {
+      } else if (d.steps > 4500) {
         okay += 1;
         total += 1;
         return "rgb(213, 217, 50)";
@@ -87,12 +83,10 @@ d3.json("./data/steps/steps.json", function(data){
         return "rgb(255, 0, 0)";
       }
     });
-
     svg.append("g")
       .attr("class", "y axis")
       .attr("transform", "translate(0,0)")
       .call(yAxis);
-      
     svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height +  ")")
@@ -175,4 +169,5 @@ d3.json("./data/steps/steps.json", function(data){
     d3.select("#step-pie").text(good + "," + okay + "," + bad);
     d3.select("#min-pie").text(good_min + "," + okay_min + "," + bad_min);
     $('.pie').peity("pie");
+    
 });

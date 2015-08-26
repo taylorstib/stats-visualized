@@ -28,3 +28,8 @@ a:visited {
   color: blue;
   text-decoration: none;
 }
+
+div.pie-holder{
+  display: inline-block;
+  padding: 20px
+}
