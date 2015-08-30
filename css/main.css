@@ -6,6 +6,9 @@ div#container {
   margin: 0 auto;
 }
 
+#steps{
+  overflow-x: scroll;
+}
 .axis path{
   fill: none;
   stroke: black;

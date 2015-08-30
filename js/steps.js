@@ -17,24 +17,85 @@ var svg_min = d3.select("#minutes").append("svg")
   .attr("width", width + margin.left + margin.right)
 .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  
+////////////////////////////////////////////////////////////////////////////////
+var months_width = 400;
+var months_height = 150;
+var months_chart = d3.select("#april").append("svg")
+  .attr("height", months_height + margin.top + margin.bottom)
+  .attr("width", months_width + margin.left + margin.right)
+.append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+/////////////////////////////////////////////////////////////////////////////////
+  
 
 var barPadding = 1;
+var monthBarPadding = 4;
 
 // Variables to generate counts
 var good = 0;
 var okay = 0;
 var bad  = 0;
 var total = 0;
+
 var good_min = 0;
 var okay_min = 0;
 var bad_min  = 0;
 var total_min = 0;
+
+var months_array = [];
 // Bar graph of my daily steps
 d3.json("./data/steps/steps.json", function(data){
   
-  // Grouped data by months for another graph
-  var groupedData = _.groupBy(data, function(obj){ return obj.date.split("/")[0]; });
-  // 
+  ////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////
+  // Better way of grouping data by month. Also produces a sum of steps for the month
+  var nested = d3.nest()
+    .key(function(d) {return d.date.split('/')[0];})
+    .rollup(function(leaves) {return {'sum': d3.sum(leaves, function(d) { return d.steps; }), 'average': d3.mean(leaves, function(d) { return d.steps; })};})
+    .entries(data);
+    
+  nested.forEach(function(d){ months_array.push(d.values.average); });
+  
+  mXScale = d3.scale.ordinal()
+    .domain([4, 8])
+    .range([0, months_width]);
+    
+  mYScale = d3.scale.linear().domain([0, d3.max(months_array, function(d){ return d; })]).range([months_height, 0]).nice();
+  
+  mYAxis = d3.svg.axis()
+    .scale(mYScale)
+    .orient("left");
+    
+  mXAxis = d3.svg.axis()
+    .scale(mXScale)
+    .orient("bottom");
+    
+  months_chart.selectAll("rect")
+    .data(months_array)
+    .enter()
+    .append("rect")
+    .attr("x", function(d, i) { return (i * (months_width / months_array.length)); })
+    .attr("y", function(d) { return mYScale(d); })
+    .attr("width", months_width / months_array.length - monthBarPadding)
+    .attr("height", function(d) { return months_height - mYScale(d); })
+    .attr("fill", function(d, i){ if (d < 5500) {
+      return "rgba(255, 0, 0, .7)";
+    } else {
+      return "rgba(0, 255, 40, .7)";
+    } });
+  
+  months_chart.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(0,0)")
+    .call(mYAxis);
+  months_chart.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + months_height +  ")")
+    .call(mXAxis);
+
+  ////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////
   
   // Parse the dates correctly
   data.forEach(function(d) { d.date = parseDate(d.date); });
@@ -45,8 +106,8 @@ d3.json("./data/steps/steps.json", function(data){
 
   
   // Commented yscale uses the data to make it dynamic
-  // var yScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.steps; })]).range([height, 0]);
-  var yScale = d3.scale.linear().domain([0, 16000]).range([height, 0]);
+  var yScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.steps ; })]).range([height, 0]).nice();
+  // var yScale = d3.scale.linear().domain([0, 16000]).range([height, 0]);
   
 
   // generate y axis
@@ -72,15 +133,15 @@ d3.json("./data/steps/steps.json", function(data){
       if (d.steps > 7500) {
         good += 1;
         total += 1;
-        return "rgb(0,200,0)";
+        return "rgba(0,200,0,.7)";
       } else if (d.steps > 4500) {
         okay += 1;
         total += 1;
-        return "rgb(213, 217, 50)";
+        return "rgba(213, 217, 50,.7)";
       } else {
         bad += 1;
         total += 1;
-        return "rgb(255, 0, 0)";
+        return "rgba(255, 0, 0,.7)";
       }
     });
     svg.append("g")
@@ -141,15 +202,15 @@ d3.json("./data/steps/steps.json", function(data){
       if (d.minutes > 70) {
         good_min += 1;
         total_min += 1;
-        return "rgb(0,200,0)";
+        return "rgba(0,200,0,.7)";
       } else if (d.minutes > 50) {
         okay_min += 1;
         total_min += 1;
-        return "rgb(213, 217, 50)";
+        return "rgba(213, 217, 50,.7)";
       } else if (d.minutes > 0) {
         bad_min += 1;
         total_min += 1;
-        return "rgb(255, 0, 0)";
+        return "rgba(255, 0, 0,.7)";
       }
     });
 
