@@ -13,6 +13,13 @@ body {
   stroke: #000;
   shape-rendering: crispEdges;
 }
+
+a {
+  padding: 10px 20px;
+  border: 1px solid black;
+  display: inline-block;
+}
+
 a,
 a:visited {
   color: blue;
