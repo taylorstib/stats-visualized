@@ -8,25 +8,15 @@
   <!-- CSS -->
   <link rel="stylesheet" href="css/main.css" media="screen" charset="utf-8">
   
-  <!-- Javascript -->
-  <!-- Development -->
-  <!-- <script src="vendor/d3.js" charset="utf-8"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="vendor/underscore.js" charset="utf-8"></script>
-  <script src="vendor/peity.js" charset="utf-8"></script> -->
-  
-  <!-- Production -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="vendor/underscore-min.js" charset="utf-8"></script>
-  <script src="vendor/jquery.peity.min.js" charset="utf-8"></script>
   
   
 </head>
 
 <body>
+  <a href="index.html">HOME</a>
   <a href="histogram.html">HISTOGRAM</a>
   <a href="passing-stats.html">PASSING</a>
+  <a href="calendar.html">Calendar</a>
   <div id="container">
     <h1>D3</h1>
 
@@ -46,24 +36,36 @@
     <div class="pie-holder">
       <p>Steps: Good, Okay, Bad</p>
       <span class="pie steps" id="step-pie" data-peity='{ "fill": ["green","yellow","red"], "radius": 60 }'></span>
+      <div id="totals">
+        <p id="good"></p>
+        <p id="okay"></p>
+        <p id="bad"></p>
+      </div>
     </div>
     <div class="pie-holder">
       <p>Minutes: Good, Okay, Bad</p>
       <span class="pie mins" id="min-pie" data-peity='{ "fill": ["green","yellow","red"], "radius": 60 }'></span>
+      <div id="totals_min">
+        <p id="good_min"></p>
+        <p id="okay_min"></p>
+        <p id="bad_min"></p>
+      </div>
     </div>
     
-    <div id="totals">
-      <p id="good"></p>
-      <p id="okay"></p>
-      <p id="bad"></p>
-    </div>
-    <div id="totals_min">
-      <p id="good_min"></p>
-      <p id="okay_min"></p>
-      <p id="bad_min"></p>
-    </div>
     
   </div>
+  <!-- Javascript -->
+  <!-- Development -->
+  <script src="vendor/d3.js" charset="utf-8"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- <script src="vendor/underscore.js" charset="utf-8"></script> -->
+  <script src="vendor/peity.js" charset="utf-8"></script>
+  
+  <!-- Production -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="vendor/underscore-min.js" charset="utf-8"></script>
+  <script src="vendor/jquery.peity.min.js" charset="utf-8"></script> -->
   <script src="js/steps.js" charset="utf-8"></script>
 </body>
 

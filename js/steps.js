@@ -56,6 +56,7 @@ d3.json("./data/steps/steps.json", function(data){
     .entries(data);
     
   nested.forEach(function(d){ months_array.push(d.values.average); });
+  console.warn(months_array);
   
   mXScale = d3.scale.ordinal()
     .domain([4, 8])
@@ -153,35 +154,26 @@ d3.json("./data/steps/steps.json", function(data){
       .attr("transform", "translate(0," + height +  ")")
       .call(xAxis);
 
-    // d3.select("#good").text("good = " + good + " = "+ Math.round(good/total * 100) + "%");
-    // d3.select("#okay").text("okay = "+okay + " = "+ Math.round(okay/total * 100) + "%");
-    // d3.select("#bad").text("bad = "+bad + " = "+ Math.round(bad/total * 100) + "%");
-});
+    d3.select("#good").text("good = " + good + " = "+ Math.round(good/total * 100) + "%");
+    d3.select("#okay").text("okay = "+okay + " = "+ Math.round(okay/total * 100) + "%");
+    d3.select("#bad").text("bad = "+bad + " = "+ Math.round(bad/total * 100) + "%");
 
-d3.json("./data/steps/steps.json", function(data){
-  
-  // Parse the dates correctly
-  data.forEach(function(d) {
-    d.date = parseDate(d.date);
-  });
-
-
-  var xScale = d3.time.scale()
+  var xMinScale = d3.time.scale()
     .range([0, width])
     .domain(d3.extent(data, function(d) { return d.date; }));
 
   // var yScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.minutes; })]).range([height, 0]);
-  var yScale = d3.scale.linear().domain([0, 160]).range([height, 0]);
+  var yMinScale = d3.scale.linear().domain([0, 160]).range([height, 0]);
   
 
   // generate y axis
-  var yAxis = d3.svg.axis()
-      .scale(yScale)
+  var yMinAxis = d3.svg.axis()
+      .scale(yMinScale)
       .tickSize(-width)
       .orient("left");
   
-  var xAxis = d3.svg.axis()
-    .scale(xScale)
+  var xMinAxis = d3.svg.axis()
+    .scale(xMinScale)
     .orient("bottom");
 
   svg_min.selectAll("rect")
@@ -192,11 +184,11 @@ d3.json("./data/steps/steps.json", function(data){
       return (i * (width / data.length)); 
     })
     .attr("y", function(d) {
-      return yScale(d.minutes);
+      return yMinScale(d.minutes);
     })
     .attr("width", width / data.length - barPadding)
     .attr("height", function(d) {
-      return height - yScale(d.minutes);
+      return height - yMinScale(d.minutes);
     })
     .attr("fill", function(d) {
       if (d.minutes > 70) {
@@ -217,16 +209,17 @@ d3.json("./data/steps/steps.json", function(data){
     svg_min.append("g")
       .attr("class", "y axis")
       .attr("transform", "translate(0,0)")
-      .call(yAxis);
+      .call(yMinAxis);
       
     svg_min.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height +  ")")
-      .call(xAxis);
+      .call(xMinAxis);
 
-    // d3.select("#good_min").text("good = " + good_min + " = "+ Math.round(good_min/total_min * 100) + "%");
-    // d3.select("#okay_min").text("okay = "+okay_min + " = "+ Math.round(okay_min/total_min * 100) + "%");
-    // d3.select("#bad_min").text("bad = "+bad_min + " = "+ Math.round(bad_min/total_min * 100) + "%");
+    d3.select("#good_min").text("good = " + good_min + " = "+ Math.round(good_min/total_min * 100) + "%");
+    d3.select("#okay_min").text("okay = "+okay_min + " = "+ Math.round(okay_min/total_min * 100) + "%");
+    d3.select("#bad_min").text("bad = "+bad_min + " = "+ Math.round(bad_min/total_min * 100) + "%");
+
     d3.select("#step-pie").text(good + "," + okay + "," + bad);
     d3.select("#min-pie").text(good_min + "," + okay_min + "," + bad_min);
     $('.pie').peity("pie");
