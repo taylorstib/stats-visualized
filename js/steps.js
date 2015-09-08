@@ -131,18 +131,18 @@ d3.json("./data/steps/steps.json", function(data){
     .attr("width", width / data.length - barPadding)
     .attr("height", function(d) { return height - yScale(d.steps); })
     .attr("fill", function(d) {
-      if (d.steps > 7500) {
+      if (d.steps > 10000) {
         good += 1;
         total += 1;
         return "rgba(0,200,0,.7)";
-      } else if (d.steps > 4500) {
+      } else if (d.steps > 6000) {
         okay += 1;
         total += 1;
         return "rgba(213, 217, 50,.7)";
       } else {
         bad += 1;
         total += 1;
-        return "rgba(255, 0, 0,.7)";
+        return "rgba(255, 0, 0,.4)";
       }
     });
     svg.append("g")
@@ -191,18 +191,18 @@ d3.json("./data/steps/steps.json", function(data){
       return height - yMinScale(d.minutes);
     })
     .attr("fill", function(d) {
-      if (d.minutes > 70) {
+      if (d.minutes > 90) {
         good_min += 1;
         total_min += 1;
         return "rgba(0,200,0,.7)";
-      } else if (d.minutes > 50) {
+      } else if (d.minutes > 60) {
         okay_min += 1;
         total_min += 1;
         return "rgba(213, 217, 50,.7)";
       } else if (d.minutes > 0) {
         bad_min += 1;
         total_min += 1;
-        return "rgba(255, 0, 0,.7)";
+        return "rgba(255, 0, 0,.4)";
       }
     });
 
