@@ -1,157 +1,157 @@
-order,position,amount,team
-11,rb,57,matt stib
-26,rb,24,matt stib
-31,wr,28,matt stib
-37,rb,35,matt stib
-51,wr,14,matt stib
-56,wr,23,matt stib
-61,d,7,matt stib
-72,qb,7,matt stib
-108,wr,1,matt stib
-120,rb,1,matt stib
-141,rb,1,matt stib
-151,te,1,matt stib
-154,k,1,matt stib
-17,rb,50,taylor stib
-28,rb,45,taylor stib
-29,wr,46,taylor stib
-53,qb,11,taylor stib
-60,te,9,taylor stib
-65,wr,11,taylor stib
-77,wr,6,taylor stib
-89,d,3,taylor stib
-99,rb,5,taylor stib
-105,k,6,taylor stib
-113,wr,3,taylor stib
-125,rb,1,taylor stib
-137,wr,1,taylor stib
-15,rb,64,dustin miles
-23,wr,56,dustin miles
-44,rb,23,dustin miles
-57,wr,19,dustin miles
-58,rb,15,dustin miles
-70,wr,4,dustin miles
-71,qb,6,dustin miles
-104,te,1,dustin miles
-107,wr,2,dustin miles
-116,d,1,dustin miles
-122,rb,4,dustin miles
-131,k,2,dustin miles
-132,rb,2,dustin miles
-10,qb,49,kevin hummel
-12,wr,38,kevin hummel
-33,te,32,kevin hummel
-41,wr,20,kevin hummel
-43,rb,13,kevin hummel
-63,d,8,kevin hummel
-69,wr,15,kevin hummel
-73,rb,8,kevin hummel
-83,qb,3,kevin hummel
-86,wr,1,kevin hummel
-101,k,8,kevin hummel
-110,wr,1,kevin hummel
-134,rb,1,kevin hummel
-4,wr,38,caleb cooke
-8,rb,73,caleb cooke
-39,wr,48,caleb cooke
-40,rb,6,caleb cooke
-54,d,4,caleb cooke
-64,rb,20,caleb cooke
-76,qb,1,caleb cooke
-100,rb,1,caleb cooke
-112,te,3,caleb cooke
-117,wr,3,caleb cooke
-124,k,1,caleb cooke
-136,wr,1,caleb cooke
-144,qb,1,caleb cooke
-2,rb,59,dan zeroulias
-3,wr,56,dan zeroulias
-9,qb,67,dan zeroulias
-35,wr,3,dan zeroulias
-81,d,2,dan zeroulias
-84,te,2,dan zeroulias
-87,qb,1,dan zeroulias
-102,rb,5,dan zeroulias
-111,rb,1,dan zeroulias
-123,k,1,dan zeroulias
-135,wr,1,dan zeroulias
-143,wr,1,dan zeroulias
-148,wr,1,dan zeroulias
-22,qb,33,corey miles
-24,wr,53,corey miles
-27,te,22,corey miles
-34,rb,13,corey miles
-46,rb,29,corey miles
-62,wr,5,corey miles
-67,rb,4,corey miles
-74,wr,9,corey miles
-85,wr,4,corey miles
-94,wr,13,corey miles
-96,rb,6,corey miles
-103,d,4,corey miles
-128,k,4,corey miles
-5,qb,65,andrew wiltz
-20,wr,58,andrew wiltz
-36,wr,31,andrew wiltz
-55,rb,11,andrew wiltz
-78,rb,7,andrew wiltz
-82,rb,12,andrew wiltz
-118,rb,7,andrew wiltz
-130,rb,1,andrew wiltz
-145,wr,1,andrew wiltz
-147,te,2,andrew wiltz
-149,wr,1,andrew wiltz
-152,d,1,andrew wiltz
-155,k,1,andrew wiltz
-19,rb,23,austin miles
-25,rb,45,austin miles
-32,wr,30,austin miles
-42,qb,26,austin miles
-45,wr,30,austin miles
-68,qb,4,austin miles
-92,te,4,austin miles
-97,wr,3,austin miles
-106,wr,7,austin miles
-121,rb,3,austin miles
-127,k,6,austin miles
-133,wr,1,austin miles
-142,d,1,austin miles
-7,rb,11,jacob gantt
-13,rb,65,jacob gantt
-14,rb,57,jacob gantt
-16,te,8,jacob gantt
-21,wr,51,jacob gantt
-47,d,1,jacob gantt
-95,qb,1,jacob gantt
-119,wr,1,jacob gantt
-140,k,1,jacob gantt
-146,rb,1,jacob gantt
-150,wr,1,jacob gantt
-153,wr,1,jacob gantt
-156,rb,1,jacob gantt
-6,wr,64,ryan hummel
-30,rb,60,ryan hummel
-38,wr,19,ryan hummel
-50,rb,18,ryan hummel
-52,qb,8,ryan hummel
-59,qb,4,ryan hummel
-66,te,7,ryan hummel
-79,wr,4,ryan hummel
-90,wr,3,ryan hummel
-114,d,3,ryan hummel
-126,rb,5,ryan hummel
-138,k,1,ryan hummel
-139,te,4,ryan hummel
-1,rb,64,andrew larsen
-18,qb,56,andrew larsen
-48,wr,16,andrew larsen
-49,rb,15,andrew larsen
-75,wr,3,andrew larsen
-80,te,8,andrew larsen
-88,rb,2,andrew larsen
-91,wr,6,andrew larsen
-93,d,5,andrew larsen
-98,rb,8,andrew larsen
-109,rb,4,andrew larsen
-115,k,6,andrew larsen
-129,rb,1,andrew larsen
+order,position,amount,team,player,team
+1,rb,64,andrew larsen,adrian peterson,min
+2,rb,59,dan zeroulias,marshawn lynch,sea
+3,wr,56,dan zeroulias,antonio brown,pit
+4,wr,38,caleb cooke,alshon jeffery,chi
+5,qb,65,andrew wiltz,andrew luck,ind
+6,wr,64,ryan hummel,demaryius thomas,den
+7,rb,11,jacob gantt,andre ellington,ari
+8,rb,73,caleb cooke,eddie lacy,gb
+9,qb,67,dan zeroulias,aaron rodgers,gb
+10,qb,49,kevin hummel,peyton manning,den
+11,rb,57,matt stib,leveon bell,pit
+12,wr,38,kevin hummel,ty hilton,ind
+13,rb,65,jacob gantt,cj anderson,den
+14,rb,57,jacob gantt,matt forte,chi
+15,rb,64,dustin miles,jamaal charles,kc
+16,te,8,jacob gantt,jordan cameron,mia
+17,rb,50,taylor stib,demarco murray,phi
+18,qb,56,andrew larsen,russell wilson,sea
+19,rb,23,austin miles,mark ingram,no
+20,wr,58,andrew wiltz,julio jones,atl
+21,wr,51,jacob gantt,calvin johnson,det
+22,qb,33,corey miles,drew brees,no
+23,wr,56,dustin miles,dez bryant,dal
+24,wr,53,corey miles,randall cobb,gb
+25,rb,45,austin miles,jeremy hill,cin
+26,rb,24,matt stib,lamar miller,mia
+27,te,22,corey miles,jimmy graham,sea
+28,rb,45,taylor stib,alfred morris,wsh
+29,wr,46,taylor stib,aj green,cin
+30,rb,60,ryan hummel,lesean mccoy,buf
+31,wr,28,matt stib,jordan matthews,phi
+32,wr,30,austin miles,brandin cooks,no
+33,te,32,kevin hummel,rob gronkowski,ne
+34,rb,13,corey miles,melvin gordon,sd
+35,wr,3,dan zeroulias,eddie royal,chi
+36,wr,31,andrew wiltz,emmanuel sanders,den
+37,rb,35,matt stib,justin forsett,bal
+38,wr,19,ryan hummel,julian edelman,ne
+39,wr,48,caleb cooke,odell beckham,nyg
+40,rb,6,caleb cooke,doug martin,tb
+41,wr,20,kevin hummel,andre johnson,ind
+42,qb,26,austin miles,tony romo,dal
+43,rb,13,kevin hummel,todd gurley,stl
+44,rb,23,dustin miles,frank gore,ind
+45,wr,30,austin miles,mike evans,tb
+46,rb,29,corey miles,carlos hyde,sf
+47,d,1,jacob gantt,jets,nyj
+48,wr,16,andrew larsen,desean jackson,wsh
+49,rb,15,andrew larsen,arian foster,hou
+50,rb,18,ryan hummel,jonathan stewart,car
+51,wr,14,matt stib,keenan allen,sd
+52,qb,8,ryan hummel,cam newton,car
+53,qb,11,taylor stib,ben roethlisberger,pit
+54,d,4,caleb cooke,cardinals,ari
+55,rb,11,andrew wiltz,latavius murray,oak
+56,wr,23,matt stib,davante adams,gb
+57,wr,19,dustin miles,deandre hopkins,hou
+58,rb,15,dustin miles,joique bell,det
+59,qb,4,ryan hummel,tom brady,ne
+60,te,9,taylor stib,greg olsen,car
+61,d,7,matt stib,seahawks,sea
+62,wr,5,corey miles,mike wallace,min
+63,d,8,kevin hummel,texans,hou
+64,rb,20,caleb cooke,joseph randle,dal
+65,wr,11,taylor stib,nelson agholor,phi
+66,te,7,ryan hummel,jason witten,dal
+67,rb,4,corey miles,giovani bernard,cin
+68,qb,4,austin miles,ryan tannehill,mia
+69,wr,15,kevin hummel,golden tate,det
+70,wr,4,dustin miles,vincent jackson,tb
+71,qb,6,dustin miles,matthew stafford,det
+72,qb,7,matt stib,sam bradford,phi
+73,rb,8,kevin hummel,legarrette blount,ne
+74,wr,9,corey miles,amari cooper,oak
+75,wr,3,andrew larsen,michael floyd,ari
+76,qb,1,caleb cooke,colin kaepernick,sf
+77,wr,6,taylor stib,sammy watkins,buf
+78,rb,7,andrew wiltz,cj spiller,no
+79,wr,4,ryan hummel,eric decker,nyj
+80,te,8,andrew larsen,travis kelce,kc
+81,d,2,dan zeroulias,patriots,ne
+82,rb,12,andrew wiltz,tj yeldon,jac
+83,qb,3,kevin hummel,philip rivers,sd
+84,te,2,dan zeroulias,austin seferian-jenkins,tb
+85,wr,4,corey miles,roddy white,atl
+86,wr,1,kevin hummel,pierre garcon,wsh
+87,qb,1,dan zeroulias,matt ryan,atl
+88,rb,2,andrew larsen,ronnie hillman,den
+89,d,3,taylor stib,ravens,bal
+90,wr,3,ryan hummel,torrey smith,sf
+91,wr,6,andrew larsen,jeremy maclin,kc
+92,te,4,austin miles,martellus bennet,chi
+93,d,5,andrew larsen,bills,buf
+94,wr,13,corey miles,brandon marshall,nyj
+95,qb,1,jacob gantt,eli manning,nyg
+96,rb,6,corey miles,rashad jennings,nyg
+97,wr,3,austin miles,martavis bryant,pit
+98,rb,8,andrew larsen,chris ivory,nyj
+99,rb,5,taylor stib,shane vereen,nyg
+100,rb,1,caleb cooke,chris johnson,ari
+101,k,8,kevin hummel,adam vinatieri,ind
+102,rb,5,dan zeroulias,isaiah crowell,cle
+103,d,4,corey miles,rams,stl
+104,te,1,dustin miles,zach ertz,phi
+105,k,6,taylor stib,steven hauschka,sea
+106,wr,7,austin miles,jarvis landry,mia
+107,wr,2,dustin miles,allen robinson,jac
+108,wr,1,matt stib,charles johnson,min
+109,rb,4,andrew larsen,ryan matthews,phi
+110,wr,1,kevin hummel,brian quick,stl
+111,rb,1,dan zeroulias,danny woodhead,sd
+112,te,3,caleb cooke,julius thomas,jac
+113,wr,3,taylor stib,larry fitzgerald,ari
+114,d,3,ryan hummel,steelers,pit
+115,k,6,andrew larsen,stephen gostkowski,ne
+116,d,1,dustin miles,broncos,den
+117,wr,3,caleb cooke,marques colston,no
+118,rb,7,andrew wiltz,tevin coleman,atl
+119,wr,1,jacob gantt,john brown,ari
+120,rb,1,matt stib,tre mason,stl
+121,rb,3,austin miles,darren mcfadden,dal
+122,rb,4,dustin miles,bishop sankey,ten
+123,k,1,dan zeroulias,dan bailey,dal
+124,k,1,caleb cooke,cody parkey,phi
+125,rb,1,taylor stib,alfred blue,hou
+126,rb,5,ryan hummel,ameer abdullah,den
+127,k,6,austin miles,justin tucker,bal
+128,k,4,corey miles,matt prater,det
+129,rb,1,andrew larsen,devonta freeman,atl
+130,rb,1,andrew wiltz,duke johnson,cle
+131,k,2,dustin miles,brandon mcmanus,den
+132,rb,2,dustin miles,charles sims,tb
+133,wr,1,austin miles,phillip dorsett,ind
+134,rb,1,kevin hummel,darren sproles,phi
+135,wr,1,dan zeroulias,kendall wright,ten
+136,wr,1,caleb cooke,ty montgomery,gb
+137,wr,1,taylor stib,jeff janis,gb
+138,k,1,ryan hummel,matt bryant,atl
+139,te,4,ryan hummel,josh hill,no
+140,k,1,jacob gantt,mason crosby,gb
+141,rb,1,matt stib,andre williams,nyg
+142,d,1,austin miles,dolphins,mia
+143,wr,1,dan zeroulias,reggie wayne,ne
+144,qb,1,caleb cooke,carson palmer,ari
+145,wr,1,andrew wiltz,cordarrelle patterson,min
+146,rb,1,jacob gantt,montee ball,den
+147,te,2,andrew wiltz,dwayne allen,ind
+148,wr,1,dan zeroulias,anquan boldin,sf
+149,wr,1,andrew wiltz,brandon lafell,ne
+150,wr,1,jacob gantt,cody latimer,den
+151,te,1,matt stib,delanie walker,ten
+152,d,1,andrew wiltz,eagles,phi
+153,wr,1,jacob gantt,donte moncrief,ind
+154,k,1,matt stib,dan carpenter,buf
+155,k,1,andrew wiltz,dustin hopkins,no
+156,rb,1,jacob gantt,knile davis,kc

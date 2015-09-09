@@ -5,19 +5,19 @@ var formatCount = d3.format(",.0f");
 
 var margin = {top: 10, right: 30, bottom: 30, left: 30},
     width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    height = 700 - margin.top - margin.bottom;
 
 var x = d3.scale.linear()
-    .domain([0, 16000])
+    .domain([0, 80])
     .range([0, width]);
 
 // Begin the remote data retrieval
-d3.json('data/steps/steps.json', function(err, json){
-  values = json.map(function(obj){return obj.steps;});
+d3.json('data/draft/draft-summary.json', function(err, json){
+  values = json.map(function(obj){return obj.amount;});
 
   // Generate a histogram using 8 uniformly-spaced bins.
   var data = d3.layout.histogram()
-      .bins(x.ticks(15))
+      .bins(x.ticks(80/2))
       (values);
 
   var y = d3.scale.linear()
