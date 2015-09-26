@@ -134,15 +134,15 @@ d3.json("./data/steps/steps.json", function(data){
       if (d.steps > 10000) {
         good += 1;
         total += 1;
-        return "rgba(0,200,0,.7)";
+        return "rgba(0,200,0,1)";
       } else if (d.steps > 6000) {
         okay += 1;
         total += 1;
-        return "rgba(213, 217, 50,.7)";
+        return "rgba(213, 217, 50,1)";
       } else {
         bad += 1;
         total += 1;
-        return "rgba(255, 0, 0,.4)";
+        return "rgba(255, 0, 0, .7)";
       }
     });
     svg.append("g")
