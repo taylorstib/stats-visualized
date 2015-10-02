@@ -3,7 +3,7 @@ var parseDate = d3.time.format("%m/%d/%Y").parse;
 console.log(parseDate("8/26/2015"));
 
 var margin = {top: 10, right: 30, bottom: 30, left: 50},
-    width = 1000 - margin.left - margin.right,
+    width = 1380 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
 
 var svg = d3.select("#steps").append("svg")
@@ -19,7 +19,7 @@ var svg_min = d3.select("#minutes").append("svg")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   
 ////////////////////////////////////////////////////////////////////////////////
-var months_width = 400;
+var months_width = 600;
 var months_height = 150;
 var months_chart = d3.select("#april").append("svg")
   .attr("height", months_height + margin.top + margin.bottom)

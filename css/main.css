@@ -2,13 +2,10 @@ body {
   font: 14px sans-serif;
 }
 div#container {
-  max-width: 1000px;
+  max-width: 1390px;
   margin: 0 auto;
 }
 
-#steps{
-  overflow-x: scroll;
-}
 .axis path{
   fill: none;
   stroke: black;
