@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <title>Steps and Minutes</title>
-  <link rel="stylesheet" href="css/main.css" media="screen" charset="utf-8">  
+  <link rel="stylesheet" href="css/main.css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">  
 </head>
 
 <body>
-  <a href="index.html">HOME</a>
-  <a href="histogram.html">HISTOGRAM</a>
   <div id="container">
-    <h1>D3</h1>
+    <div class="pure-menu pure-menu-horizontal">
+      <a href="/" class="pure-menu-heading pure-menu-link">HOME</a>
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="/histogram" class="pure-menu-link">Histogram</a></li>
+      </ul>
+    </div>  
+    <h1>Steps</h1>
 
-    <div id="april">
-      
+    <div id="april"></div>
+
+    <div class="button-container">
+      <button class="pure-button" onclick="renderMonth('may')">May</button>
+      <button class="pure-button" onclick="renderMonth('june')">June</button>
+      <button class="pure-button" onclick="renderMonth('july')">July</button>
+      <button class="pure-button" onclick="renderMonth('august')">August</button>
+      <button class="pure-button" onclick="renderMonth('september')">September</button>
     </div>
 
-    <div id="steps">
-      <!-- steps graph -->
-    </div>
+    <div id="steps"><!-- steps graph --></div>
     
     <!-- <div id="minutes"> -->
       <!-- minutes graph -->
@@ -33,6 +41,7 @@
         <p id="good"></p>
         <p id="okay"></p>
         <p id="bad"></p>
+        <p id="total"></p>
       </div>
     </div>
     <!-- <div class="pie-holder">
@@ -45,15 +54,8 @@
       </div>
     </div> -->
     
-    
   </div>
   <!-- Javascript -->
-  <!-- Development -->
-  <!-- <script src="vendor/d3.js" charset="utf-8"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="vendor/underscore.js" charset="utf-8"></script>
-  <script src="vendor/peity.js" charset="utf-8"></script> -->
-  
   <!-- Production -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

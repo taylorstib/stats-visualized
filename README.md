@@ -1,1 +1,1 @@
-NFL Stats Visualized in D3
+Stats Visualized in D3

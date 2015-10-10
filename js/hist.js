@@ -57,3 +57,9 @@ d3.json('data/steps/steps.json', function(err, json){
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis);
 });
+
+function renderMonth(month) {
+  console.log("renderMonth");
+}
+
+renderMonth();

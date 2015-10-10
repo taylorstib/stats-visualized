@@ -14,7 +14,7 @@ body {
   shape-rendering: crispEdges;
 }
 
-a {
+/*a {
   padding: 10px 20px;
   border: 1px solid black;
   display: inline-block;
@@ -25,4 +25,4 @@ a:visited {
   color: blue;
   text-decoration: none;
   margin-bottom: 20px
-}
+}*/
