@@ -2,7 +2,7 @@
 var parseDate = d3.time.format("%m/%d/%Y").parse;
 
 var margin = {top: 10, right: 30, bottom: 30, left: 50},
-    width = 1380 - margin.left - margin.right,
+    width = 1200 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
 
 var svg = d3.select("#steps").append("svg")
@@ -176,7 +176,7 @@ d3.json("./data/steps/steps.json", function(data){
     .enter()
     .append("rect")
     .attr("x", function(d, i) {
-      return (i * (width / data.length)); 
+      return (i * (width / data.length));
     })
     .attr("y", function(d) {
       return yMinScale(d.minutes);

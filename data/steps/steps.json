@@ -160,5 +160,11 @@
 {"date":"10/6/2015","steps":4830,"minutes":50,"steps_per_min":97},
 {"date":"10/7/2015","steps":5685,"minutes":56,"steps_per_min":102},
 {"date":"10/8/2015","steps":1984,"minutes":21,"steps_per_min":99},
-{"date":"10/9/2015","steps":12052,"minutes":124,"steps_per_min":97}
+{"date":"10/9/2015","steps":12052,"minutes":124,"steps_per_min":97},
+{"date":"10/10/2015","steps":5112,"minutes":52,"steps_per_min":98},
+{"date":"10/11/2015","steps":4615,"minutes":47,"steps_per_min":98},
+{"date":"10/12/2015","steps":3726,"minutes":37,"steps_per_min":101},
+{"date":"10/13/2015","steps":4178,"minutes":43,"steps_per_min":97},
+{"date":"10/14/2015","steps":4791,"minutes":48,"steps_per_min":100},
+{"date":"10/15/2015","steps":1958,"minutes":21,"steps_per_min":93}
 ]
