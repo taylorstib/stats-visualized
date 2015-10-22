@@ -169,5 +169,8 @@
 {"date":"10/15/2015","steps":1958,"minutes":21,"steps_per_min":93},
 {"date":"10/16/2015","steps":3282,"minutes":34,"steps_per_min":97},
 {"date":"10/17/2015","steps":6983,"minutes":70,"steps_per_min":100},
-{"date":"10/18/2015","steps":4609,"minutes":48,"steps_per_min":96}
+{"date":"10/18/2015","steps":4609,"minutes":48,"steps_per_min":96},
+{"date":"10/19/2015","steps":2617,"minutes":28,"steps_per_min":93},
+{"date":"10/20/2015","steps":6629,"minutes":62,"steps_per_min":107},
+{"date":"10/21/2015","steps":5284,"minutes":53,"steps_per_min":100}
 ]
