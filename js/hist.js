@@ -8,7 +8,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 30},
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.linear()
-    .domain([0, 16000])
+    .domain([0, 18000])
     .range([0, width]);
 
 // Begin the remote data retrieval
