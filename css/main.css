@@ -35,10 +35,17 @@ a:visited {
   color: blue;
   text-decoration: none;
 }*/
+#april {
+  max-width: 750px;
+  display: inline-block;
+}
 
 div.pie-holder{
   display: inline-block;
-  padding: 20px
+  padding: 0
+}
+#stats-table {
+  display: inline-block;
 }
 /*
 .pure-button {

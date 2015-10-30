@@ -18,6 +18,28 @@
     <h1>Steps</h1>
 
     <div id="april"></div>
+    
+    <div class="pie-holder">
+      <p>Steps: Good, Okay, Bad</p>
+      <span class="pie steps" id="step-pie" data-peity='{ "fill": ["green","yellow","red"], "radius": 60 }'></span>
+      <div id="totals">
+        <p id="good"></p>
+        <p id="okay"></p>
+        <p id="bad"></p>
+        <p id="total"></p>
+      </div>
+    </div>
+    <div id="stats-table">
+      <table>
+        <thead>
+          <th>Stat 1</th>
+          <th>Stat 2</th>
+          <th>Stat 3</th>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
 
     <div class="button-container">
       <button class="pure-button" onclick="renderMonth('may')">May</button>
@@ -35,16 +57,6 @@
     <!-- </div> -->
     
     <!-- Pie charts for conts -->
-    <div class="pie-holder">
-      <p>Steps: Good, Okay, Bad</p>
-      <span class="pie steps" id="step-pie" data-peity='{ "fill": ["green","yellow","red"], "radius": 60 }'></span>
-      <div id="totals">
-        <p id="good"></p>
-        <p id="okay"></p>
-        <p id="bad"></p>
-        <p id="total"></p>
-      </div>
-    </div>
     <!-- <div class="pie-holder">
       <p>Minutes: Good, Okay, Bad</p>
       <span class="pie mins" id="min-pie" data-peity='{ "fill": ["green","yellow","red"], "radius": 60 }'></span>
