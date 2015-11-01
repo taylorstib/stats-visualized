@@ -1,5 +1,6 @@
 // Do some set up before calling the data
 var parseDate = d3.time.format("%m/%d/%Y").parse;
+var parseMonth = d3.time.format("%m").parse;
 
 var margin = {top: 10, right: 30, bottom: 30, left: 50},
     width = 1200 - margin.left - margin.right,
@@ -40,17 +41,19 @@ d3.json("./data/steps/steps.json", function(data){
   
 // MONTHS GRAPH
 
+  // data.forEach(function(d) { d.dateM = parseMonth(d.date); });
   // Better way of grouping data by month. Also produces a sum of steps for the month
   var nested = d3.nest()
-    .key(function(d) {return d.date.split('/')[0];})
+    .key(function(d) {return parseMonth(d.date.split('/')[0]);})
     .rollup(function(leaves) {return {'sum': d3.sum(leaves, function(d) { return d.steps; }), 'average': d3.mean(leaves, function(d) { return d.steps; })};})
     .entries(data);
     
   nested.forEach(function(d){ months_array.push(d.values.average); });
   console.log(months_array);
+  console.log(nested);
   
   mXScale = d3.scale.ordinal()
-    .domain([4, 8])
+    .domain(['May', 'October'])
     .range([0, months_width]);
     
   mYScale = d3.scale.linear().domain([0, d3.max(months_array, function(d){ return d; })]).range([months_height, 0]).nice();
