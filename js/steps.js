@@ -50,7 +50,6 @@ d3.json("./data/steps/steps.json", function(data){
     
   nested.forEach(function(d){ months_array.push(d.values.average); });
   console.log(months_array);
-  console.log(nested);
   
   mXScale = d3.scale.ordinal()
     .domain(['May', 'October'])
@@ -75,7 +74,7 @@ d3.json("./data/steps/steps.json", function(data){
     .attr("width", months_width / months_array.length - monthBarPadding)
     .attr("height", function(d) { return months_height - mYScale(d); })
     .attr("fill", function(d, i){ if (d < 5500) {
-      return "rgba(255, 0, 0, .7)";
+      return "rgba(111, 111, 111, 0.7)";
     } else {
       return "rgba(0, 255, 40, .7)";
     } });
@@ -114,7 +113,8 @@ d3.json("./data/steps/steps.json", function(data){
   
   var xAxis = d3.svg.axis()
     .scale(xScale)
-    .orient("bottom");
+    .orient("bottom")
+    .ticks(d3.time.days, 15);
 
   svg.selectAll("rect")
     .data(data)
@@ -136,7 +136,7 @@ d3.json("./data/steps/steps.json", function(data){
       } else {
         bad += 1;
         total += 1;
-        return "rgba(255, 0, 0, .7)";
+        return "rgba(153, 151, 151, 0.7)";
       }
     })
     .attr("stroke", function(d) {return '#eee';});
@@ -226,10 +226,33 @@ d3.json("./data/steps/steps.json", function(data){
 });
 
 function renderMonth(month){
+  
+  // Variables to generate counts
+  var good = 0; okay = 0; bad  = 0; total = 0;
+
   console.log("rendering "+month);
-  if (month === 'june') {
-      
-      
-  }
+    d3.json("./data/steps/"+month+".json", function(data){
+        
+        data.forEach(function(d) {
+          if (d.steps > 10000) {
+            good += 1;
+            total += 1;
+          } else if (d.steps > 6000) {
+            okay += 1;
+            total += 1;
+          } else {
+            bad += 1;
+            total += 1;
+          }
+         });
+        
+        d3.select("#good").text("good = " + good + " = "+ Math.round(good/total * 100) + "%");
+        d3.select("#okay").text("okay = "+okay + " = "+ Math.round(okay/total * 100) + "%");
+        d3.select("#bad").text("bad = "+bad + " = "+ Math.round(bad/total * 100) + "%");
+        d3.select("#total").text("Total = "+ total + " = 100%").style({"font-weight": "bold", "border-top": "2px solid black", "padding-top": "8px"});
+        
+        d3.select("#step-pie").text(good + "," + okay + "," + bad);
+        $('.pie').peity("pie");
+  });
 }
 
