@@ -1,5 +1,6 @@
 body {
   font: 14px sans-serif;
+  /*background-color: rgb(191, 191, 191)*/
 }
 div#container {
   max-width: 1390px;
@@ -35,7 +36,7 @@ a:visited {
   color: blue;
   text-decoration: none;
 }*/
-#april {
+#months {
   max-width: 750px;
   display: inline-block;
 }
