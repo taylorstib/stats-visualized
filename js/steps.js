@@ -289,9 +289,9 @@ function renderMonth(month){
         .attr("height", function(d) { return height - yScale(d.steps); })
         .attr("fill", function(d) {
           if (d.steps > 10000) {
-            return "rgba(0,200,0,1)";
+            return "rgba(0,200,0,0.7)";
           } else if (d.steps > 6000) {
-            return "rgba(213, 217, 50,1)";
+            return "rgba(213, 217, 50,0.7)";
           } else {
             return "rgba(153, 151, 151, 0.7)";
           }
@@ -307,9 +307,9 @@ function renderMonth(month){
         .attr("height", function(d) { return height - yScale(d.steps); })
         .attr("fill", function(d) {
           if (d.steps > 10000) {
-            return "rgba(0,200,0,1)";
+            return "rgba(0,200,0,0.7)";
           } else if (d.steps > 6000) {
-            return "rgba(213, 217, 50,1)";
+            return "rgba(213, 217, 50,0.7)";
           } else {
             return "rgba(153, 151, 151, 0.7)";
           }
