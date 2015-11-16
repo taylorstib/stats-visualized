@@ -48,6 +48,12 @@ div.pie-holder{
 #stats-table {
   display: inline-block;
 }
+
+#stats-table table, #stats-table table td, #stats-table table th {
+  border: 1px solid black;
+  padding: 10px;
+}
+
 /*
 .pure-button {
     /* Structure */

@@ -1,6 +1,7 @@
 // Do some set up before calling the data
 var parseDate = d3.time.format("%m/%d/%Y").parse;
 var parseMonth = d3.time.format("%m").parse;
+var dateFormat = d3.time.format("%a %m/%d");
 
 var margin = {top: 10, right: 30, bottom: 30, left: 50},
     width = 1200 - margin.left - margin.right,
@@ -36,7 +37,7 @@ var months_array = [];
 
 
 // Bar graph of my daily steps
-d3.json("./data/steps/steps.json", function(data){
+d3.json("./data/steps/last_three_months.json", function(data){
   
 // MONTHS GRAPH
 
@@ -137,29 +138,17 @@ d3.json("./data/steps/steps.json", function(data){
         return "rgba(153, 151, 151, 0.7)";
       }
     })
-    .on('click', function(d){console.log(d.steps);})
-    .on("mouseover", function(d) {
-     //Get this bar's x/y values, then augment for the tooltip
-     var xPosition = parseFloat(d3.select(this).attr("x") + ((width / data.length - barPadding) / 2) );
-     var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
-     //Create the tooltip label
-     svg.append("text")
-        .attr("id", "tooltip")
-        .attr("x", xPosition)
-        .attr("y", yPosition)
-        .attr("text-anchor", "middle")
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "11px")
-        .attr("font-weight", "bold")
-        .attr("fill", "black")
-        .text(d.steps);
-
+    .on('click', function(d) {
+      d3.select('#hover-date').text(dateFormat(d.date));
+      d3.select('#hover-steps').text(d.steps);
+      d3.select('#hover-minutes').text(d.minutes);
+      d3.select('#hover-pace').text(d.steps_per_min);
     })
-    .on("mouseout", function() {
-    
-     //Remove the tooltip
-     d3.select("#tooltip").remove();
-     
+    .on('mouseover', function (d) {
+      d3.select('#hover-date').text(dateFormat(d.date));
+      d3.select('#hover-steps').text(d.steps);
+      d3.select('#hover-minutes').text(d.minutes);
+      d3.select('#hover-pace').text(d.steps_per_min);
     })
     .attr("stroke", function(d) {return '#eee';});
     svg.append("g")
@@ -197,7 +186,7 @@ d3.json("./data/steps/steps.json", function(data){
     .orient("bottom");
 
   svg_min.selectAll("rect")
-    .data(data)
+    .data(data, function(d){return d.date;})
     .enter()
     .append("rect")
     .attr("x", function(d, i) {
@@ -211,23 +200,32 @@ d3.json("./data/steps/steps.json", function(data){
       return height - yMinScale(d.minutes);
     })
     .attr("fill", function(d) {
-      if (d.minutes > 90) {
+      if (d.minutes > 75) {
         good_min += 1;
         total_min += 1;
         return "rgba(0,200,0,.7)";
-      } else if (d.minutes > 60) {
+      } else if (d.minutes > 50) {
         okay_min += 1;
         total_min += 1;
         return "rgba(213, 217, 50,.7)";
       } else if (d.minutes > 0) {
         bad_min += 1;
         total_min += 1;
-        return "rgba(255, 0, 0,.4)";
+        return "rgba(153, 151, 151, 0.7)";
       }
     })
     .on('click', function(d) {
-      console.log(d.minutes);
-      })
+      d3.select('#hover-date').text(dateFormat(d.date));
+      d3.select('#hover-steps').text(d.steps);
+      d3.select('#hover-minutes').text(d.minutes);
+      d3.select('#hover-pace').text(d.steps_per_min);
+    })
+    .on('mouseover', function (d) {
+      d3.select('#hover-date').text(dateFormat(d.date));
+      d3.select('#hover-steps').text(d.steps);
+      d3.select('#hover-minutes').text(d.minutes);
+      d3.select('#hover-pace').text(d.steps_per_min);
+    })
     .attr("stroke", function(d) {return '#cbcbcb';});
 
     svg_min.append("g")
@@ -275,12 +273,30 @@ function renderMonth(month){
       var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient("bottom");
+      
+      // Min Variables
+      var xMinScale = d3.time.scale()
+        .domain(d3.extent(data, function(d) { return d.date; }))
+        .range([0, width]);
+      var yMinScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.minutes; })]).range([height, 0]).nice();
+      // generate y axis
+      var yMinAxis = d3.svg.axis()
+          .scale(yMinScale)
+          .tickSize(-width)
+          .orient("left");
+      var xMinAxis = d3.svg.axis()
+        .scale(xMinScale)
+        .orient("bottom");
 
 
       var bars = svg.selectAll("rect")
-            .data(data, function(d){
-              return d.date;
-            });
+        .data(data, function(d){
+          return d.date;
+        });
+      var minBars = svg_min.selectAll('rect')
+        .data(data, function (d) {
+          return d.date;
+        });
 
       bars.transition()
         .attr("x", function(d, i) { return (i * (width / data.length)); })
@@ -297,7 +313,6 @@ function renderMonth(month){
           }
         })
         .attr("stroke", function(d) {return '#eee';});
-        
 
       bars.enter()
         .append('rect')
@@ -314,30 +329,70 @@ function renderMonth(month){
             return "rgba(153, 151, 151, 0.7)";
           }
         })
-        .on('click', function(d){console.log(d.steps);})
-        .on("mouseover", function(d) {
-         //Get this bar's x/y values, then augment for the tooltip
-         var xPosition = parseFloat(d3.select(this).attr("x") + ((width / data.length - barPadding) / 2));
-         var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
-         //Create the tooltip label
-         svg.append("text")
-            .attr("id", "tooltip")
-            .attr("x", xPosition)
-            .attr("y", yPosition)
-            .attr("text-anchor", "middle")
-            .attr("font-family", "sans-serif")
-            .attr("font-size", "11px")
-            .attr("font-weight", "bold")
-            .attr("fill", "black")
-            .text(d.steps);
+        .on('click', function(d){
+          d3.select('#hover-date').text(dateFormat(d.date));
+          d3.select('#hover-steps').text(d.steps);
+          d3.select('#hover-minutes').text(d.minutes);
+          d3.select('#hover-pace').text(d.steps_per_min);
         })
-        .on("mouseout", function() {
-         //Remove the tooltip
-         d3.select("#tooltip").remove();
+        .on("mouseover", function(d) {
+          //Place the data in the table
+          d3.select('#hover-date').text(dateFormat(d.date));
+          d3.select('#hover-steps').text(d.steps);
+          d3.select('#hover-minutes').text(d.minutes);
+          d3.select('#hover-pace').text(d.steps_per_min);
         })
         .attr("stroke", function(d) {return '#eee';});
       
       bars.exit().remove();
+      
+      minBars.transition()
+        .attr("x", function(d, i) { return (i * (width / data.length)); })
+        .attr("y", function(d) { return yMinScale(d.minutes); })
+        .attr("width", width / data.length - barPadding)
+        .attr("height", function(d) { return height - yMinScale(d.minutes); })
+        .attr("fill", function(d) {
+          if (d.minutes > 75) {
+            return "rgba(0,200,0,0.7)";
+          } else if (d.minutes > 50) {
+            return "rgba(213, 217, 50,0.7)";
+          } else {
+            return "rgba(153, 151, 151, 0.7)";
+          }
+        })
+        .attr("stroke", function(d) {return '#eee';});
+
+      minBars.enter()
+        .append('rect')
+        .attr("x", function(d, i) { return (i * (width / data.length)); })
+        .attr("y", function(d) { return yMinScale(d.minutes); })
+        .attr("width", width / data.length - barPadding)
+        .attr("height", function(d) { return height - yMinScale(d.minutes); })
+        .attr("fill", function(d) {
+          if (d.minutes > 75) {
+            return "rgba(0,200,0,0.7)";
+          } else if (d.minutes > 50) {
+            return "rgba(213, 217, 50,0.7)";
+          } else {
+            return "rgba(153, 151, 151, 0.7)";
+          }
+        })
+        .on('click', function(d){
+          d3.select('#hover-date').text(dateFormat(d.date));
+          d3.select('#hover-steps').text(d.steps);
+          d3.select('#hover-minutes').text(d.minutes);
+          d3.select('#hover-pace').text(d.steps_per_min);
+        })
+        .on("mouseover", function(d) {
+           //Place the data in the table
+           d3.select('#hover-date').text(dateFormat(d.date));
+           d3.select('#hover-steps').text(d.steps);
+           d3.select('#hover-minutes').text(d.minutes);
+           d3.select('#hover-pace').text(d.steps_per_min);
+          })
+        .attr("stroke", function(d) {return '#eee';});
+      
+      minBars.exit().remove();
         
       svg.select(".y.axis")
         .transition()
@@ -359,10 +414,10 @@ function renderMonth(month){
         }
        });
        data.forEach(function(d) {
-         if (d.minutes > 90) {
+         if (d.minutes > 75) {
            good_min += 1;
            total_min += 1;
-         } else if (d.minutes > 60) {
+         } else if (d.minutes > 50) {
            okay_min+= 1;
            total_min+= 1;
          } else {
