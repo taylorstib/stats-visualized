@@ -23,5 +23,7 @@
 {"date":"12/22/2015","steps":3607,"minutes":39,"steps_per_min":92},
 {"date":"12/23/2015","steps":3955,"minutes":43,"steps_per_min":92},
 {"date":"12/24/2015","steps":8681,"minutes":85,"steps_per_min":102},
-{"date":"12/25/2015","steps":7082,"minutes":77,"steps_per_min":92}
+{"date":"12/25/2015","steps":7082,"minutes":77,"steps_per_min":92},
+{"date":"12/26/2015","steps":4718,"minutes":50,"steps_per_min":94},
+{"date":"12/27/2015","steps":6976,"minutes":67,"steps_per_min":104}
 ]
