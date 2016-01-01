@@ -37,7 +37,7 @@ var months_array = [];
 
 
 // Bar graph of my daily steps
-d3.json("./data/steps/last_three_months.json", function(data){
+d3.json("./data/steps/steps.json", function(data){
   
 // MONTHS GRAPH
 
@@ -51,7 +51,7 @@ d3.json("./data/steps/last_three_months.json", function(data){
   // console.log(months_array);
   
   mXScale = d3.scale.ordinal()
-    .domain(['May','June','July','August','September','October','November'])
+    .domain(['May','June','July','August','September','October','November', 'December'])
     .rangePoints([0, months_width]);
   
   mYScale = d3.scale.linear().domain([0, d3.max(months_array, function(d){ return d; })]).range([months_height, 0]).nice();
@@ -83,10 +83,10 @@ d3.json("./data/steps/last_three_months.json", function(data){
     .attr("class", "y axis")
     .attr("transform", "translate(0,0)")
     .call(mYAxis);
-  months_chart.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + months_height +  ")")
-    .call(mXAxis);
+  // months_chart.append("g")
+  //   .attr("class", "x axis")
+  //   .attr("transform", "translate(0," + months_height +  ")")
+  //   .call(mXAxis);
 
   
 // STEPS GRAPHS
