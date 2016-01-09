@@ -1,6 +1,10 @@
 body {
   font: 14px sans-serif;
 }
+div#container {
+  max-width: 1390px;
+  margin: 0 auto;
+}
 .bar rect {
   fill: steelblue;
   shape-rendering: crispEdges;
