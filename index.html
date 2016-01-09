@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Steps and Minutes</title>
+  <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
   <link rel="stylesheet" href="css/main.css" media="screen" charset="utf-8">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 </head>
@@ -17,8 +18,29 @@
     </div>
     <h1>Steps</h1>
 
+    
+
+    <div class="button-container">
+      <button class="pure-button" onclick="renderMonth('steps')">ALL</button>
+      <button class="pure-button" onclick="renderMonth('last_three_months')">Last 3</button>
+      <button class="pure-button" onclick="renderMonth('march')">March</button>
+      <button class="pure-button" onclick="renderMonth('april')">April</button>
+      <button class="pure-button" onclick="renderMonth('may')">May</button>
+      <button class="pure-button" onclick="renderMonth('june')">June</button>
+      <button class="pure-button" onclick="renderMonth('july')">July</button>
+      <button class="pure-button" onclick="renderMonth('august')">August</button>
+      <button class="pure-button" onclick="renderMonth('september')">September</button>
+      <button class="pure-button" onclick="renderMonth('october')">October</button>
+      <button class="pure-button" onclick="renderMonth('november')">November</button>
+      <button class="pure-button" onclick="renderMonth('december')">December</button>
+      <button class="pure-button" onclick="renderMonth('january')">January</button>
+    </div>
+
+    <div id="steps"></div>
+    <div id="minutes"></div>
     <div id="months"></div>
     
+    <!-- Pie charts for conts -->
     <div class="pie-holder">
       <p>Steps:</p>
       <span class="pie steps" id="step-pie" data-peity='{ "fill": ["green","yellow","red"], "radius": 60 }'></span>
@@ -56,29 +78,6 @@
         </tbody>
       </table>
     </div>
-
-    <div class="button-container">
-      <button class="pure-button" onclick="renderMonth('steps')">ALL</button>
-      <button class="pure-button" onclick="renderMonth('last_three_months')">Last 3</button>
-      <button class="pure-button" onclick="renderMonth('march')">March</button>
-      <button class="pure-button" onclick="renderMonth('april')">April</button>
-      <button class="pure-button" onclick="renderMonth('may')">May</button>
-      <button class="pure-button" onclick="renderMonth('june')">June</button>
-      <button class="pure-button" onclick="renderMonth('july')">July</button>
-      <button class="pure-button" onclick="renderMonth('august')">August</button>
-      <button class="pure-button" onclick="renderMonth('september')">September</button>
-      <button class="pure-button" onclick="renderMonth('october')">October</button>
-      <button class="pure-button" onclick="renderMonth('november')">November</button>
-      <button class="pure-button" onclick="renderMonth('december')">December</button>
-      <button class="pure-button" onclick="renderMonth('january')">January</button>
-    </div>
-
-    <div id="steps"><!-- steps graph --></div>
-    
-    <div id="minutes">
-    </div>
-    
-    <!-- Pie charts for conts -->
     
   </div>
   <!-- Javascript -->
