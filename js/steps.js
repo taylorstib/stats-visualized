@@ -37,7 +37,7 @@ var months_array = [];
 
 
 // Bar graph of my daily steps
-d3.json("./data/steps/steps.json", function(data){
+d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), function(data){
   
 // MONTHS GRAPH
 
@@ -226,7 +226,7 @@ d3.json("./data/steps/steps.json", function(data){
       d3.select('#hover-minutes').text(d.minutes);
       d3.select('#hover-pace').text(d.steps_per_min);
     })
-    .attr("stroke", function(d) {return '#cbcbcb';});
+    .attr("stroke", function(d) {return '#eee';});
 
     svg_min.append("g")
       .attr("class", "y axis")
@@ -257,7 +257,7 @@ function renderMonth(month){
   
 
   console.log("rendering "+month);
-    d3.json("./data/steps/"+month+".json", function(data){
+    d3.json("./data/steps/"+month+".json" + '?' + Math.floor(Math.random() * 1000), function(data){
 
       data.forEach(function(d) { d.date = parseDate(d.date); });
       var xScale = d3.time.scale()
