@@ -252,8 +252,8 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
 function renderMonth(month){
   
   // Variables to generate counts
-  var good = 0; okay = 0; bad  = 0; total = 0;
-  var good_min = 0; okay_min = 0; bad_min  = 0; total_min = 0;
+  var good = 0; okay = 0; bad  = 0; total = 0; blank_days = 0;
+  var good_min = 0; okay_min = 0; bad_min  = 0; total_min = 0; blank_days_mins = 0;
   
 
   console.log("rendering "+month);
@@ -402,19 +402,25 @@ function renderMonth(month){
         .call(xAxis);
 
       data.forEach(function(d) {
-        if (d.steps > 10000) {
+        if (d.steps === null) {
+          blank_days += 1;
+        }
+        else if (d.steps > 10000) {
           good += 1;
           total += 1;
         } else if (d.steps > 6000) {
           okay += 1;
           total += 1;
-        } else {
+        } else if (d.steps < 6000) {
           bad += 1;
           total += 1;
         }
        });
        data.forEach(function(d) {
-         if (d.minutes > 75) {
+         if (d.minutes === null) {
+           blank_days_mins += 1;
+         }
+         else if (d.minutes > 75) {
            good_min += 1;
            total_min += 1;
          } else if (d.minutes > 50) {

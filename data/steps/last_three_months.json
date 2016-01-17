@@ -1,8 +1,4 @@
 [
-{"date":"10/8/2015","steps":1984,"minutes":21,"steps_per_min":99},
-{"date":"10/9/2015","steps":12052,"minutes":124,"steps_per_min":97},
-{"date":"10/10/2015","steps":5112,"minutes":52,"steps_per_min":98},
-{"date":"10/11/2015","steps":4615,"minutes":47,"steps_per_min":98},
 {"date":"10/12/2015","steps":3726,"minutes":37,"steps_per_min":101},
 {"date":"10/13/2015","steps":4178,"minutes":43,"steps_per_min":97},
 {"date":"10/14/2015","steps":4791,"minutes":48,"steps_per_min":100},
@@ -90,5 +86,14 @@
 {"date":"1/4/2016","steps":3362,"minutes":34,"steps_per_min":99},
 {"date":"1/5/2016","steps":2609,"minutes":27,"steps_per_min":97},
 {"date":"1/6/2016","steps":3301,"minutes":34,"steps_per_min":97},
-{"date":"1/7/2016","steps":2680,"minutes":27,"steps_per_min":99}
+{"date":"1/7/2016","steps":2680,"minutes":27,"steps_per_min":99,"percent of goal":"27%"},
+{"date":"1/8/2016","steps":2983,"minutes":29,"steps_per_min":103,"percent of goal":"30%"},
+{"date":"1/9/2016","steps":7001,"minutes":74,"steps_per_min":95,"percent of goal":"70%"},
+{"date":"1/10/2016","steps":5806,"minutes":58,"steps_per_min":100,"percent of goal":"58%"},
+{"date":"1/11/2016","steps":7638,"minutes":76,"steps_per_min":101,"percent of goal":"76%"},
+{"date":"1/12/2016","steps":11433,"minutes":0,"steps_per_min":0,"percent of goal":"114%"},
+{"date":"1/13/2016","steps":6814,"minutes":0,"steps_per_min":0,"percent of goal":"68%"},
+{"date":"1/14/2016","steps":2766,"minutes":0,"steps_per_min":0,"percent of goal":"28%"},
+{"date":"1/15/2016","steps":8310,"minutes":0,"steps_per_min":0,"percent of goal":"83%"},
+{"date":"1/16/2016","steps":9564,"minutes":0,"steps_per_min":0,"percent of goal":"96%"}
 ]
