@@ -46,9 +46,9 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
     .key(function(d) {return parseMonth(d.date.split('/')[0]);})
     .rollup(function(leaves) {return {'sum': d3.sum(leaves, function(d) { return d.steps; }), 'average': d3.mean(leaves, function(d) { return d.steps; })};})
     .entries(data);
-  //
-  nested.forEach(function(d){ months_array.push(d.values.average); });
-  // console.log(months_array);
+  // console.log(new Date(nested[0].key));
+  nested.forEach(function(d){ months_array.push(Math.round(d.values.average)); });
+  console.log(months_array);
   
   mXScale = d3.scale.ordinal()
     .domain(['May','June','July','August','September','October','November', 'December'])
@@ -131,7 +131,7 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
       } else if (d.steps > 6000) {
         okay += 1;
         total += 1;
-        return "rgba(213, 217, 50,1)";
+        return "rgba(153, 151, 151, 0.7)";
       } else {
         bad += 1;
         total += 1;
@@ -307,7 +307,7 @@ function renderMonth(month){
           if (d.steps > 10000) {
             return "rgba(0,200,0,0.7)";
           } else if (d.steps > 6000) {
-            return "rgba(213, 217, 50,0.7)";
+            return "rgba(153, 151, 151, 0.7)";
           } else {
             return "rgba(153, 151, 151, 0.7)";
           }
@@ -324,7 +324,7 @@ function renderMonth(month){
           if (d.steps > 10000) {
             return "rgba(0,200,0,0.7)";
           } else if (d.steps > 6000) {
-            return "rgba(213, 217, 50,0.7)";
+            return "rgba(153, 151, 151, 0.7)";
           } else {
             return "rgba(153, 151, 151, 0.7)";
           }
