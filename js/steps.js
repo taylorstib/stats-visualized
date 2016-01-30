@@ -110,7 +110,6 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
     .domain(d3.extent(data, function(d) { return d.date; }))
     .range([0, width]);
 
-  console.log(d3.min(data, function(d){ return d.steps;}));
   // Commented yscale uses the data to make it dynamic
   var yScale = d3.scale.linear().domain([d3.min(data, function(d){ return d.steps;}), d3.max(data, function(d){return d.steps ; })]).range([height, 0]).nice();
   // var yScale = d3.scale.linear().domain([0, 16000]).range([height, 0]);
