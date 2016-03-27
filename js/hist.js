@@ -1,4 +1,5 @@
 var values;
+// var dataBins;
 
 // A formatter for counts.
 var formatCount = d3.format(",.0f");
@@ -11,13 +12,27 @@ var x = d3.scale.linear()
     .domain([0, 18000])
     .range([0, width]);
 
+function updateHistogram(data) {
+  // DATA JOIN
+  // Join new data with old elements, if any.
+  var bar = svg.selectAll(".bar")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "bar")
+      .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+}
+
 // Begin the remote data retrieval
 d3.json('data/steps/steps.json', function(err, json){
   values = json.map(function(obj){return obj.steps;});
+  values = _.filter(values, function(d){
+    return d !== null;
+  });
 
-  // Generate a histogram using 8 uniformly-spaced bins.
+  // Generate a histogram using uniformly-spaced bins.
   var data = d3.layout.histogram()
-      .bins(x.ticks(15))
+      .bins(x.ticks(18))
       (values);
 
   var y = d3.scale.linear()
@@ -61,5 +76,3 @@ d3.json('data/steps/steps.json', function(err, json){
 function renderMonth(month) {
   console.log("renderMonth");
 }
-
-renderMonth();

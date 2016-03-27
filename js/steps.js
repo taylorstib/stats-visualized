@@ -1,8 +1,25 @@
+var TaylorSteps = (function(){
+  var milSecPerDay = 86400000,
+      name = "Taylor",
+      favoriteTeam = 'Packers';
+  
+  var obj = {
+    getSteps: function() {
+      console.log("LOTS")
+    },
+    milSecPerDay: milSecPerDay,
+    myName: name,
+    team: favoriteTeam
+  };
+  return obj;
+})();
+
 // Do some set up before calling the data
 var parseDate = d3.time.format("%m/%d/%Y").parse;
 var parseMonth = d3.time.format("%m").parse;
 var dateFormat = d3.time.format("%a %m/%d");
-var milSecPerDay = 864000000;
+var parseWeek = d3.time.format("%U").parse;
+var milSecPerDay = 86400000;
 
 // set color Variables
 var success_green = "rgba(0,200,0,1)";
@@ -36,8 +53,8 @@ var months_chart = d3.select("#months").append("svg")
 var barPadding = 0; monthBarPadding = 5;
 
 // Variables to generate counts
-var good = 0; okay = 0; bad  = 0; total = 0;
-var good_min = 0; okay_min = 0; bad_min  = 0; total_min = 0;
+var good = 0, okay = 0, bad  = 0, blank_days = 0, total = 0;
+var good_min = 0, okay_min = 0, bad_min  = 0, total_min = 0;
 var months_array = [];
 
 
@@ -45,8 +62,6 @@ var months_array = [];
 d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), function(data){
 
   var beginningDate = new Date('Dec 1, 2015');
-  console.log(beginningDate);
-  console.log(new Date(data[0].date));
   var filteredData = data.filter(function(d){
     return new Date(d.date).getTime() > beginningDate.getTime();
   });
@@ -59,11 +74,12 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
     .rollup(function(leaves) {return {'sum': d3.sum(leaves, function(d) { return d.steps; }), 'average': d3.mean(leaves, function(d) { return d.steps; })};})
     .entries(data);
   // console.log(new Date(nested[0].key));
+  console.log(nested);
   nested.forEach(function(d){ months_array.push(Math.round(d.values.average)); });
   console.log(months_array);
   
   mXScale = d3.scale.ordinal()
-    .domain(['May','June','July','August','September','October','November', 'December'])
+    .domain(['May','June','July','August','September','October','November', 'December', 'January', 'February', 'March'])
     .rangePoints([0, months_width]);
   
   mYScale = d3.scale.linear().domain([0, d3.max(months_array, function(d){ return d; })]).range([months_height, 0]).nice();
@@ -135,7 +151,10 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
     .attr("width", width / data.length - barPadding)
     .attr("height", function(d) { return height - yScale(d.steps); })
     .attr("fill", function(d) {
-      if (d.steps > 10000) {
+      if (d.steps === null) {
+        blank_days += 1;
+      }
+      else if (d.steps > 10000) {
         good += 1;
         total += 1;
         return success_green;
@@ -259,11 +278,11 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
 function renderMonth(month){
   
   // Variables to generate counts
-  var good = 0; okay = 0; bad  = 0; total = 0; blank_days = 0;
-  var good_min = 0; okay_min = 0; bad_min  = 0; total_min = 0; blank_days_mins = 0;
+  var good = 0, okay = 0, bad  = 0, total = 0, blank_days = 0;
+  var good_min = 0, okay_min = 0, bad_min  = 0, total_min = 0, blank_days_mins = 0;
+  var total_steps = 0, avg_steps = 0;
   
 
-  console.log("rendering "+month);
     d3.json("./data/steps/"+month+".json" + '?' + Math.floor(Math.random() * 1000), function(data){
 
       data.forEach(function(d) { d.date = parseDate(d.date); });
@@ -415,9 +434,11 @@ function renderMonth(month){
         else if (d.steps > 10000) {
           good += 1;
           total += 1;
+          total_steps += d.steps;
         } else {
           bad += 1;
           total += 1;
+          total_steps += d.steps;
         }
        });
        data.forEach(function(d) {
@@ -444,6 +465,7 @@ function renderMonth(month){
         d3.select("#total_min").text("Total = "+ total_min + " = 100%").style({"font-weight": "bold", "border-top": "2px solid black", "padding-top": "8px"});
         d3.select("#min-pie").text(good_min + "," + okay_min + "," + bad_min);
         $('.pie').peity("pie");
-
+      console.log(total_steps);
+      console.log((total_steps / total).toFixed());
   });
 }
