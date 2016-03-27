@@ -1,0 +1,8 @@
+body {
+  font: 14px sans-serif;
+  /*background-color: rgb(191, 191, 191)*/
+}
+div#container {
+  max-width: 1390px;
+  margin: 0 auto;
+}
