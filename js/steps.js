@@ -2,7 +2,7 @@ var TaylorSteps = (function(){
   var milSecPerDay = 86400000,
       name = "Taylor",
       favoriteTeam = 'Packers';
-  
+
   var obj = {
     getSteps: function() {
       console.log("LOTS")
@@ -40,7 +40,7 @@ var svg_min = d3.select("#minutes").append("svg")
   .attr("width", width + margin.left + margin.right)
 .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  
+
 // MONTHS GRAPH SETUP
 var months_width = 600; months_height = 200;
 
@@ -77,22 +77,22 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
   console.log(nested);
   nested.forEach(function(d){ months_array.push(Math.round(d.values.average)); });
   console.log(months_array);
-  
+
   mXScale = d3.scale.ordinal()
     .domain(['May','June','July','August','September','October','November', 'December', 'January', 'February', 'March'])
     .rangePoints([0, months_width]);
-  
+
   mYScale = d3.scale.linear().domain([0, d3.max(months_array, function(d){ return d; })]).range([months_height, 0]).nice();
-  
+
   mYAxis = d3.svg.axis()
     .scale(mYScale)
     .tickSize(-width)
     .orient("left");
-  
+
   mXAxis = d3.svg.axis()
     .scale(mXScale)
     .orient("bottom");
-  
+
   months_chart.selectAll("rect")
     .data(months_array)
     .enter()
@@ -106,7 +106,7 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
     } else {
       return success_green;
     } });
-  
+
   months_chart.append("g")
     .attr("class", "y axis")
     .attr("transform", "translate(0,0)")
@@ -116,12 +116,12 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
   //   .attr("transform", "translate(0," + months_height +  ")")
   //   .call(mXAxis);
 
-  
+
 // STEPS GRAPHS
-  
+
   // Parse the dates correctly
   data.forEach(function(d) { d.date = parseDate(d.date); });
-  
+
   var xScale = d3.time.scale()
     .domain(d3.extent(data, function(d) { return d.date; }))
     .range([0, width]);
@@ -129,7 +129,7 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
   // Commented yscale uses the data to make it dynamic
   var yScale = d3.scale.linear().domain([d3.min(data, function(d){ return d.steps;}), d3.max(data, function(d){return d.steps ; })]).range([height, 0]).nice();
   // var yScale = d3.scale.linear().domain([0, 16000]).range([height, 0]);
-  
+
 
   // generate y axis
   var yAxis = d3.svg.axis()
@@ -137,7 +137,7 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
     .orient("left")
     .tickSize(-width)
     .ticks(10);
-  
+
   var xAxis = d3.svg.axis()
     .scale(xScale)
     .orient("bottom");
@@ -199,14 +199,14 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
 
   // var yScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.minutes; })]).range([height, 0]);
   var yMinScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.minutes; })]).range([height, 0]).nice();
-  
+
 
   // generate y axis
   var yMinAxis = d3.svg.axis()
       .scale(yMinScale)
       .tickSize(-width)
       .orient("left");
-  
+
   var xMinAxis = d3.svg.axis()
     .scale(xMinScale)
     .orient("bottom");
@@ -258,7 +258,7 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
       .attr("class", "y axis")
       .attr("transform", "translate(0,0)")
       .call(yMinAxis);
-      
+
     svg_min.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height +  ")")
@@ -272,16 +272,16 @@ d3.json("./data/steps/steps.json" + '?' + Math.floor(Math.random() * 1000), func
     d3.select("#step-pie").text(good + "," + okay + "," + bad);
     d3.select("#min-pie").text(good_min + "," + okay_min + "," + bad_min);
     $('.pie').peity("pie");
-    
+
 });
 
 function renderMonth(month){
-  
+
   // Variables to generate counts
   var good = 0, okay = 0, bad  = 0, total = 0, blank_days = 0;
   var good_min = 0, okay_min = 0, bad_min  = 0, total_min = 0, blank_days_mins = 0;
   var total_steps = 0, avg_steps = 0;
-  
+
 
     d3.json("./data/steps/"+month+".json" + '?' + Math.floor(Math.random() * 1000), function(data){
 
@@ -290,7 +290,7 @@ function renderMonth(month){
         .domain(d3.extent(data, function(d) { return d.date; }))
         .range([0, width]);
       var yScale = d3.scale.linear().domain([0, d3.max(data, function(d){return d.steps ; })]).range([height, 0]).nice();
-      
+
       var yAxis = d3.svg.axis()
         .scale(yScale)
         .orient("left")
@@ -299,7 +299,7 @@ function renderMonth(month){
       var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient("bottom");
-      
+
       // Min Variables
       var xMinScale = d3.time.scale()
         .domain(d3.extent(data, function(d) { return d.date; }))
@@ -369,9 +369,9 @@ function renderMonth(month){
           d3.select('#hover-pace').text(d.steps_per_min);
         })
         .attr("stroke", function(d) {return '#eee';});
-      
+
       bars.exit().remove();
-      
+
       minBars.transition()
         .attr("x", function(d, i) { return (i * (width / data.length)); })
         .attr("y", function(d) { return yMinScale(d.minutes); })
@@ -417,9 +417,9 @@ function renderMonth(month){
            d3.select('#hover-pace').text(d.steps_per_min);
           })
         .attr("stroke", function(d) {return '#eee';});
-      
+
       minBars.exit().remove();
-        
+
       svg.select(".y.axis")
         .transition()
         .call(yAxis);
@@ -458,7 +458,7 @@ function renderMonth(month){
         d3.select("#bad").text("bad = "+bad + " = "+ Math.round(bad/total * 100) + "%");
         d3.select("#total").text("Total = "+ total + " = 100%").style({"font-weight": "bold", "border-top": "2px solid black", "padding-top": "8px"});
         d3.select("#step-pie").text(good + "," + okay + "," + bad);
-        
+
         d3.select("#good_min").text("good = " + good_min + " = "+ Math.round(good_min/total_min * 100) + "%");
         // d3.select("#okay_min").text("okay = "+okay_min + " = "+ Math.round(okay_min/total_min * 100) + "%");
         d3.select("#bad_min").text("bad = "+bad_min + " = "+ Math.round(bad_min/total_min * 100) + "%");
